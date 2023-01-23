@@ -55,7 +55,9 @@ class HomePage extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  onPressed: (() {}),
+                  onPressed: (() {
+                    controller.getGym();
+                  }),
                   icon: const Icon(
                     Icons.search,
                     color: Colors.black,
@@ -78,9 +80,8 @@ class HomePage extends StatelessWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 primary: false,
-                itemCount: controller.near.length,
+                itemCount: 3,
                 itemBuilder: ((context, index) {
-                  final gymCity = controller.near[index];
                   return Container(
                     height: high / 3,
                     margin: const EdgeInsets.all(16),
@@ -92,10 +93,10 @@ class HomePage extends StatelessWidget {
                       children: [
                         Container(
                           height: high / 5,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(gymCity.image)),
-                            borderRadius: const BorderRadius.only(
+                          decoration: const BoxDecoration(
+                            // image: DecorationImage(
+                            // image: NetworkImage(gymCity.image)),
+                            borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
                             ),

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/controller/category_Controller.dart';
 import 'package:gym_app/core/const.dart';
 import 'package:gym_app/view/widgets/category/category.dart';
 import 'package:gym_app/view/widgets/city_location/city_and_location.dart';
+import 'package:provider/provider.dart';
 
 class AppBarButton extends StatelessWidget {
   const AppBarButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<CategoryController>(context);
     return Row(
       children: [
         Column(
@@ -23,6 +26,7 @@ class AppBarButton extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    controller.nearbyTruff();
                     showModalBottomSheet(
                       context: context,
                       shape: const RoundedRectangleBorder(
@@ -31,7 +35,7 @@ class AppBarButton extends StatelessWidget {
                         ),
                       ),
                       builder: ((context) {
-                        return CityAndLocation();
+                        return const CityAndLocation();
                       }),
                     );
                   },
@@ -78,6 +82,7 @@ class AppBarButton extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    controller.nearbyTruff();
                     showModalBottomSheet(
                       context: context,
                       shape: const RoundedRectangleBorder(
@@ -86,7 +91,7 @@ class AppBarButton extends StatelessWidget {
                         ),
                       ),
                       builder: ((context) {
-                        return Category();
+                        return const CityAndLocation();
                       }),
                     );
                   },
@@ -141,7 +146,7 @@ class AppBarButton extends StatelessWidget {
                         ),
                       ),
                       builder: ((context) {
-                        return Category();
+                        return const Category();
                       }),
                     );
                   },
