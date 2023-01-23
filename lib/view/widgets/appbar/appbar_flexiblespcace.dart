@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/core/const.dart';
 import 'package:gym_app/view/widgets/category/category.dart';
+import 'package:gym_app/view/widgets/city_location/city_and_location.dart';
 
 class AppBarButton extends StatelessWidget {
   const AppBarButton({super.key});
@@ -30,7 +31,7 @@ class AppBarButton extends StatelessWidget {
                         ),
                       ),
                       builder: ((context) {
-                        return Category();
+                        return CityAndLocation();
                       }),
                     );
                   },

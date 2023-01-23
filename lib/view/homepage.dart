@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/controller/category_Controller.dart';
 import 'package:gym_app/view/widgets/appbar/appbar_flexiblespcace.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final high = MediaQuery.of(context).size.height;
+    final controller = Provider.of<CategoryController>(context);
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              // pinned: true,
+              pinned: true,
               expandedHeight: 150,
               backgroundColor: Colors.white,
               leading: Container(
@@ -74,14 +78,32 @@ class HomePage extends StatelessWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 primary: false,
-                itemCount: 3,
+                itemCount: controller.near.length,
                 itemBuilder: ((context, index) {
+                  final gymCity = controller.near[index];
                   return Container(
-                    height: 500,
+                    height: high / 3,
                     margin: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: high / 5,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(gymCity.image)),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                            ),
+                            color: Colors.amber,
+                          ),
+                          // child: Text(gymCity.city),
+                        )
+                      ],
                     ),
                   );
                 }),
